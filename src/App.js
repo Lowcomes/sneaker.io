@@ -32,7 +32,6 @@ function App() {
     axios.delete(`https://63fe597a370fe830d9d2d176.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
-
   const onAddToCart = async (obj) => {
     try {
       console.log(cartItems);
