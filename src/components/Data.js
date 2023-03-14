@@ -1,37 +1,37 @@
 const cardItemsData = [
   {
     id: 1,
-    img: "/img/sneakers/1.jpg",
+    img: "../img/sneakers/1.jpg",
     price: "12999",
     title: "Мужские Кроссовки Nike Blazer Mid Suede",
   },
   {
     id: 2,
-    img: "/img/sneakers/2.jpg",
+    img: "../img/sneakers/2.jpg",
     title: "Мужские Кроссовки Nike Air Max 270",
     price: 12999,
   },
   {
     id: 3,
-    img: "/img/sneakers/3.jpg",
+    img: "../img/sneakers/3.jpg",
     title: "Мужские Кроссовки Nike Blazer Mid Suede",
     price: 8499,
   },
   {
     id: 4,
-    img: "/img/sneakers/4.jpg",
+    img: "../img/sneakers/4.jpg",
     title: "Кроссовки Puma X Aka Boku Future Rider",
     price: 8999,
   },
   {
     id: 5,
-    img: "/img/sneakers/5.jpg",
+    img: "../img/sneakers/5.jpg",
     title: "Мужские Кроссовки Under Armour Curry 8",
     price: 15199,
   },
   {
     id: 6,
-    img: "/img/sneakers/6.jpg",
+    img: "../img/sneakers/6.jpg",
     title: "Мужские Кроссовки Nike Kyrie 7",
     price: 11299,
   },
