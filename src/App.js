@@ -59,9 +59,7 @@ function App() {
           setFavorites((prev) => prev.filter((item) => item.id !== obj.id))
         );
         setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
-        axios.delete(
-          `https://63fe597a370fe830d9d2d176.mockapi.io/favorite/${obj.id}`
-        );
+        axios.delete(`/sneaker.iofavorite/${obj.id}`);
       } else {
         console.log(obj);
         const { data } = await axios.post(
@@ -92,7 +90,7 @@ function App() {
       <Header openCart={() => setCartOpened(true)} />
       <Routes>
         <Route
-          path="/"
+          path="/sneaker.io"
           element={
             <Home
               items={items}
@@ -105,7 +103,7 @@ function App() {
           }
         />
         <Route
-          path="/favorites"
+          path="/sneaker.io/favorites"
           element={
             <Favorites items={favorites} onAddFavorite={onAddFavorite} />
           }

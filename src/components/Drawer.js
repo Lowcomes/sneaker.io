@@ -6,7 +6,7 @@ function Drawer({ closeCart, onRemove, items = [] }) {
           Корзина
           <img
             className="removeBtn"
-            src="/img/RemoveA.svg"
+            src="/sneaker.io/img/RemoveA.svg"
             alt="Remove"
             onClick={closeCart}
           />
@@ -23,7 +23,7 @@ function Drawer({ closeCart, onRemove, items = [] }) {
                   </div>
                   <img
                     className="removeBtn"
-                    src="/img/RemoveA.svg"
+                    src="/sneaker.io/img/RemoveA.svg"
                     alt="Remove"
                     onClick={() => onRemove(obj.id)}
                   />
@@ -44,17 +44,30 @@ function Drawer({ closeCart, onRemove, items = [] }) {
             </ul>
             <button className="btnOrder">
               <p>Оформить заказ</p>
-              <img src="/img/arrow.svg" alt="arrow" className="cartRight" />
+              <img
+                src="/sneaker.io/img/arrow.svg"
+                alt="arrow"
+                className="cartRight"
+              />
             </button>
           </div>
         ) : (
           <div className="emptyCart">
-            <img width={120} height={120} src="/img/Cart.png" alt="Cart" />
+            <img
+              width={120}
+              height={120}
+              src="/sneaker.io/img/Cart.png"
+              alt="Cart"
+            />
             <h4>Корзина пустая</h4>
             <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
             <button className="btnOrder">
               <p onClick={closeCart}>Вернуться назад</p>
-              <img src="/img/left.svg" alt="arrow" className="cartLeft" />
+              <img
+                src="/sneaker.io/img/left.svg"
+                alt="arrow"
+                className="cartLeft"
+              />
             </button>
           </div>
         )}

@@ -17,7 +17,11 @@ function Card({ item, onPlus, onFavorite, favorited = false }) {
     <div className="card">
       <div className="favorite">
         <img
-          src={isFavorite ? "/img/like.svg" : "/img/unlike.svg"}
+          src={
+            isFavorite
+              ? "/sneaker.io/img/like.svg"
+              : "/sneaker.io/img/unlike.svg"
+          }
           alt="unlike"
           onClick={clickFavorite}
         />
@@ -30,7 +34,11 @@ function Card({ item, onPlus, onFavorite, favorited = false }) {
           <span className="value">{item.price} руб.</span>
         </div>
         <img
-          src={isAded ? "/img/btn-checked.svg" : "/img/btn-plus.svg"}
+          src={
+            isAded
+              ? "/sneaker.io/img/btn-checked.svg"
+              : "/sneaker.io/img/btn-plus.svg"
+          }
           alt="plus"
           className="btn"
           onClick={onClickPlus}
