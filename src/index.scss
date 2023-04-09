@@ -217,6 +217,14 @@ code {
     font-weight: 600;
   }
 }
+.wrapperLeft {
+  flex: 1;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0px;
+  width: 100%;
+}
 .cartItem {
   border: 1px solid #f3f3f3;
   border-radius: 20px;
@@ -310,4 +318,8 @@ code {
 }
 .cartLeft {
   left: 30px;
+}
+.loadStyle {
+  display: block;
+  height: 100%;
 }

@@ -1,6 +1,37 @@
+import axios from "axios";
+import React from "react";
+import { useCarts } from "../hooks/useCarts";
+import Info from "./info";
+
 function Drawer({ closeCart, onRemove, items = [] }) {
+  const { cartItems, setCartItems, totlaPrice } = useCarts();
+  const [isOrderComplete, setIsOrderComplete] = React.useState(false);
+  const [orderID, setOrderID] = React.useState(null);
+  const onClickOrder = async () => {
+    try {
+      const { data } = await axios.post(
+        "https://642487869e0a30d92b1e0ed1.mockapi.io/Order",
+        { items: cartItems }
+      );
+
+      setOrderID(data.id);
+      setIsOrderComplete(true);
+      setCartItems([]);
+
+      for (let i = 0; i < cartItems.length; i++) {
+        const item = cartItems[i];
+        await axios.delete(
+          `https://63fe597a370fe830d9d2d176.mockapi.io/cart/` + item.id
+        );
+      }
+    } catch (error) {
+      alert("Не удалось создать заказ :(");
+    }
+  };
+
   return (
     <div className="overlay">
+      <div className="wrapperLeft" onClick={closeCart}></div>
       <div className="drawer">
         <h3>
           Корзина
@@ -34,15 +65,17 @@ function Drawer({ closeCart, onRemove, items = [] }) {
               <li>
                 <p className="drawerText">Итого: </p>
                 <div></div>
-                <p className="drawerValue">21 498 руб. </p>
+                <p className="drawerValue">{totlaPrice} руб. </p>
               </li>
               <li>
                 <p className="drawerText">Налог 5%: </p>
                 <div></div>
-                <p className="drawerValue">1074 руб. </p>
+                <p className="drawerValue">
+                  {Math.trunc(totlaPrice * 0.05)} руб.{" "}
+                </p>
               </li>
             </ul>
-            <button className="btnOrder">
+            <button className="btnOrder" onClick={onClickOrder}>
               <p>Оформить заказ</p>
               <img
                 src="/sneaker.io/img/arrow.svg"
@@ -52,24 +85,19 @@ function Drawer({ closeCart, onRemove, items = [] }) {
             </button>
           </div>
         ) : (
-          <div className="emptyCart">
-            <img
-              width={120}
-              height={120}
-              src="/sneaker.io/img/Cart.png"
-              alt="Cart"
-            />
-            <h4>Корзина пустая</h4>
-            <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-            <button className="btnOrder">
-              <p onClick={closeCart}>Вернуться назад</p>
-              <img
-                src="/sneaker.io/img/left.svg"
-                alt="arrow"
-                className="cartLeft"
-              />
-            </button>
-          </div>
+          <Info
+            title={isOrderComplete ? "Заказ оформлен! " : "Корзина пустая"}
+            description={
+              isOrderComplete
+                ? `Ваш заказ #${orderID} скоро будет передан курьерской доставке`
+                : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+            }
+            image={
+              isOrderComplete
+                ? "/sneaker.io/img/Order.jpg"
+                : "/sneaker.io/img/Cart.png"
+            }
+          />
         )}
       </div>
     </div>
